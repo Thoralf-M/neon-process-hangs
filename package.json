@@ -4,7 +4,7 @@
     "author": "Thoralf-M",
     "license": "MIT",
     "scripts": {
-        "install": "cargo-cp-artifact -nc index.node -- cargo build --message-format=json-render-diagnostics",
+        "install": "cargo-cp-artifact -nc index.node -- cargo build --release --message-format=json-render-diagnostics",
         "test": "node index.js"
     },
     "devDependencies": {
