@@ -1,0 +1,13 @@
+{
+    "name": "neon-process-hangs",
+    "version": "0.1.0",
+    "author": "Thoralf-M",
+    "license": "MIT",
+    "scripts": {
+        "install": "cargo-cp-artifact -nc index.node -- cargo build --message-format=json-render-diagnostics",
+        "test": "node index.js"
+    },
+    "devDependencies": {
+        "cargo-cp-artifact": "^0.1"
+    }
+}

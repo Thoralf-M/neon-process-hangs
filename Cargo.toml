@@ -1,0 +1,13 @@
+[package]
+name = "neon-process-hangs"
+version = "0.1.0"
+edition = "2018"
+exclude = ["artifacts.json", "index.node"]
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies.neon]
+version = "0.8"
+default-features = false
+features = ["napi-6", "event-queue-api"]
