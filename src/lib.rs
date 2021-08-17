@@ -42,22 +42,22 @@ pub fn with_event_queue_name(mut cx: FunctionContext) -> JsResult<JsString> {
     Ok(cx.string(&name))
 }
 
-pub struct Second {
+pub struct WithoutEventQueue {
     name: String,
 }
 
-impl Finalize for Second {}
+impl Finalize for WithoutEventQueue {}
 
-impl Second {
+impl WithoutEventQueue {
     fn new(name: String) -> Arc<Self> {
         Arc::new(Self { name })
     }
 }
 
-pub fn without_event_queue_new(mut cx: FunctionContext) -> JsResult<JsBox<Arc<Second>>> {
+pub fn without_event_queue_new(mut cx: FunctionContext) -> JsResult<JsBox<Arc<WithoutEventQueue>>> {
     let name = cx.argument::<JsString>(0)?;
     let name = name.value(&mut cx);
-    let wrapper = Second::new(name);
+    let wrapper = WithoutEventQueue::new(name);
 
     Ok(cx.boxed(wrapper))
 }
@@ -65,7 +65,7 @@ pub fn without_event_queue_new(mut cx: FunctionContext) -> JsResult<JsBox<Arc<Se
 pub fn without_event_queue_name(mut cx: FunctionContext) -> JsResult<JsString> {
     let wrapper = Arc::clone(
         &&cx.this()
-            .downcast_or_throw::<JsBox<Arc<Second>>, FunctionContext>(&mut cx)?,
+            .downcast_or_throw::<JsBox<Arc<WithoutEventQueue>>, FunctionContext>(&mut cx)?,
     );
     let name = wrapper.name.clone();
 
