@@ -18,13 +18,13 @@ class WithoutChannel {
     }
 }
 
-// without event queue works fine
+// without channel works fine
 // setTimeout(() => {
 //     console.log('Finished:', new WithoutChannel('Test').name())
 //     // }, 100); // small timeout, process will exit
 // }, 10000); // timeout around 10 seconds or higher, process will also exit
 
-// with event queue it hangs after > ~10 seconds timeout
+// with channel it hangs after > ~10 seconds timeout
 setTimeout(() => {
     console.log('Finished:', new WithChannel('Test').name())
     // }, 100); // small timeout, process will exit
