@@ -19,6 +19,7 @@ class WithoutChannel {
 }
 
 // without channel works fine
+
 // setTimeout(() => {
 //     console.log('Finished:', new WithoutChannel('Test').name())
 //     // }, 100); // small timeout, process will exit
